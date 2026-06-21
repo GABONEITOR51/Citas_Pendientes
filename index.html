@@ -111,16 +111,31 @@
   <div id="content"></div>
 
   <footer class="foot">
-    <div>Documento de trabajo interno · 805 MultiServices</div>
+    <div>Documento de trabajo interno · 805 MultiServices · v2</div>
     <div id="genfecha"></div>
   </footer>
 </div>
 
 <script>
 (function(){
-  var p = new URLSearchParams(window.location.search);
+  // Lee parámetros TANTO de la query (?) como del fragmento (#).
+  // El fragmento no se envía al servidor: evita el error 414 "URI Too Long".
+  // Si una clave llega en ambos, gana la del fragmento.
+  function readParams(){
+    var out = {};
+    try{
+      new URLSearchParams(window.location.search).forEach(function(v,k){ out[k]=v; });
+    }catch(e){}
+    try{
+      if(window.location.hash && window.location.hash.length > 1){
+        new URLSearchParams(window.location.hash.slice(1)).forEach(function(v,k){ out[k]=v; });
+      }
+    }catch(e){}
+    return out;
+  }
+  var P = readParams();
 
-  var t = (p.get('titulo')||'').trim();
+  var t = (P.titulo||'').trim();
   if(t) document.getElementById('titulo').textContent = t;
 
   var now = new Date();
@@ -129,7 +144,7 @@
     now.toLocaleTimeString('es-MX',{hour:'2-digit',minute:'2-digit'});
 
   var content = document.getElementById('content');
-  var raw = p.get('datos');
+  var raw = P.datos;
 
   if(!raw || !raw.trim()){
     content.innerHTML =

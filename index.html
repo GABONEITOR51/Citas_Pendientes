@@ -61,10 +61,10 @@
   thead th:last-child{border-right:none}
   th.num,td.num{text-align:center;font-variant-numeric:tabular-nums;width:30px}
   /* Nombre y Apellido: columnas amplias */
-  th.nombre,td.nombre{width:25%}
-  th.apellido,td.apellido{width:25%}
-  /* País: comprimida y centrada */
-  th.pais,td.pais{width:7%;text-align:center}
+  th.nombre,td.nombre{width:24%}
+  th.apellido,td.apellido{width:24%}
+  /* País: centrada, ancho suficiente para 3 dígitos en una línea */
+  th.pais,td.pais{width:9%;text-align:center;white-space:nowrap}
   /* Estado y Municipio: más espacio y centradas */
   th.edo,td.edo{width:12%;text-align:center}
   th.mun,td.mun{width:12%;text-align:center}
@@ -75,7 +75,7 @@
   tbody tr:nth-child(even){background:var(--zebra)}
   tbody tr:hover{background:#EAF1ED}
   td.nombre{font-weight:600}
-  .pais{color:var(--ink-soft);font-variant-numeric:tabular-nums}
+  td.pais{color:var(--ink-soft);font-variant-numeric:tabular-nums}
   .state{padding:54px 26px;text-align:center;color:var(--ink-soft)}
   .state h2{font-family:"Fraunces",serif;color:var(--seal);font-size:20px;margin-bottom:8px}
   .state code{background:var(--zebra);padding:2px 7px;border-radius:4px;font-size:13px}

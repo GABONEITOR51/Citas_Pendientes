@@ -59,14 +59,15 @@
     padding:8px 12px;border-right:1px solid rgba(255,255,255,.12);white-space:nowrap;
   }
   thead th:last-child{border-right:none}
-  th.num,td.num{text-align:center;font-variant-numeric:tabular-nums;width:40px}
+  th.num,td.num{text-align:center;font-variant-numeric:tabular-nums;width:30px}
   /* Nombre y Apellido: columnas amplias */
-  th.nombre,td.nombre{width:24%}
-  th.apellido,td.apellido{width:24%}
-  th.pais,td.pais{width:12%}
-  /* Estado y Municipio: reducidas (solo código corto) */
-  th.edo,td.edo{width:8%}
-  th.mun,td.mun{width:8%}
+  th.nombre,td.nombre{width:25%}
+  th.apellido,td.apellido{width:25%}
+  /* País: comprimida y centrada */
+  th.pais,td.pais{width:7%;text-align:center}
+  /* Estado y Municipio: más espacio y centradas */
+  th.edo,td.edo{width:12%;text-align:center}
+  th.mun,td.mun{width:12%;text-align:center}
   th.date,td.date{font-variant-numeric:tabular-nums;white-space:nowrap;width:12%}
   /* Filas más compactas */
   tbody td{padding:4px 12px;border-bottom:1px solid var(--line);border-right:1px solid #ECE8DF;vertical-align:top;line-height:1.25;overflow-wrap:break-word}
@@ -185,8 +186,8 @@
     '<th class="apellido">Apellido</th>' +
     '<th class="date">Nac.</th>' +
     '<th class="pais">País</th>' +
-    '<th class="edo">Estado</th>' +
-    '<th class="mun">Municipio</th>' +
+    '<th class="edo">EDO.</th>' +
+    '<th class="mun">MPIO.</th>' +
     '</tr></thead><tbody>';
   rows.forEach(function(r, i){
     html +=

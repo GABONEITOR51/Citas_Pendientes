@@ -165,17 +165,17 @@
     if(s == null) return '';
     return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
   }
-  // Corta estado/municipio: código numérico + 3 primeras letras del nombre.
-  // Ej: "15 México" -> "15 Méx" · "09 Ciudad de México" -> "09 Ciu" · "México" -> "Méx"
+  // Corta estado/municipio: número + "." + 3 primeras letras del nombre.
+  // Ej: "12.GUERRERO" -> "12.GUE" · "12 Guerrero" -> "12.Gue" · "GUERRERO" -> "GUE"
   function corto(s){
     if(s == null) return '';
     s = String(s).trim();
     if(!s) return '';
-    var m = s.match(/^(\d+)\s*(.*)$/);
+    var m = s.match(/^(\d+)\s*[.\-\s]?\s*(.*)$/);
     if(m){
       var num = m[1];
       var nom = m[2].trim();
-      return nom ? (num + ' ' + nom.slice(0,3)) : num;
+      return nom ? (num + '.' + nom.slice(0,3)) : num;
     }
     return s.slice(0,3);
   }
@@ -183,7 +183,7 @@
     '<th class="num">No.</th>' +
     '<th class="nombre">Nombre(s)</th>' +
     '<th class="apellido">Apellido</th>' +
-    '<th class="date">Fecha de nacimiento</th>' +
+    '<th class="date">Nac.</th>' +
     '<th class="pais">País</th>' +
     '<th class="edo">Estado</th>' +
     '<th class="mun">Municipio</th>' +
